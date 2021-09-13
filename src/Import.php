@@ -302,7 +302,7 @@ class Import
                                 if (is_iterable($item)) {
                                     foreach ($item as $key => $itemValue) {
                                         $contentType = $this->config->getContentType(explode('/', $itemValue['reference'])[0]);
-                                        $slug = explode('/', $itemValue['reference'])[1];
+                                        $slug = strtolower(explode('/', $itemValue['reference'])[1]);
                                         $referencedEntity = $this->contentRepository->findOneBySlug($slug, $contentType);
 
                                         if ($referencedEntity instanceof Content) {
