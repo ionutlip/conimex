@@ -131,7 +131,8 @@ class Import
     {
         $user = $this->guesstimateUser($record);
 
-        $slug = $record->get('slug', $record->get('fields')['slug']);
+        $fields =  $record->get('fields');
+        $slug = $record->get('slug', $fields !== null ? $fields['slug']: null);
 
         // Slug can be either a string (older exports) or an array with a single element (newer exports)
         if (is_array($slug)) {
